@@ -242,6 +242,13 @@ public class Filter {
         }
     }
 
+    /**
+     * Метод для обработки логического оператора AND.
+     *
+     * @param lexemes лексемы, содержащие логическое выражение, которое необходимо обработать
+     * @return результат выполнения логического выражения
+     * @throws FilterException если выражение содержит ошибки
+     */
     public static Boolean and(LexemeBuffer lexemes) throws FilterException {
         Boolean expression = factor(lexemes);
         while (true) {
@@ -259,6 +266,13 @@ public class Filter {
 
     }
 
+    /**
+     * Метод для обработки логического оператора OR.
+     *
+     * @param lexemes лексемы, содержащие логическое выражение, которое необходимо обработать
+     * @return результат выполнения логического выражения
+     * @throws FilterException если выражение содержит ошибки
+     */
     public static Boolean or(LexemeBuffer lexemes) throws FilterException {
         boolean expression = and(lexemes);
         while (true) {
@@ -274,6 +288,13 @@ public class Filter {
         }
     }
 
+    /**
+     * Метод для обработки логического выражения.
+     *
+     * @param lexemes лексемы, содержащие логическое выражение, которое необходимо обработать
+     * @return результат выполнения логического выражения
+     * @throws FilterException если выражение содержит ошибки
+     */
     public static Boolean expr(LexemeBuffer lexemes) throws FilterException {
         Lexeme lexeme = lexemes.next();
         if (lexeme.type == LexemeType.EOF) {
@@ -284,6 +305,13 @@ public class Filter {
         }
     }
 
+    /**
+     * Метод для обработки фактора логического выражения.
+     *
+     * @param lexemes лексемы, содержащие фактор логического выражения, который необходимо обработать
+     * @return результат выполнения логического выражения
+     * @throws FilterException если фактор содержит ошибки
+     */
     public static Boolean factor(LexemeBuffer lexemes) throws FilterException {
         Lexeme lexeme = lexemes.next();
         switch (lexeme.type) {
@@ -364,6 +392,12 @@ public class Filter {
         }
     }
 
+    /**
+     * Метод проверяет, является ли строка числом типа int.
+     *
+     * @param str строка, которую необходимо проверить
+     * @return true, если строка является числом типа int, false - в противном случае
+     */
     private static boolean isNumeric(String str) {
         try {
             Integer.parseInt(str);
@@ -373,6 +407,12 @@ public class Filter {
         }
     }
 
+    /**
+     * Метод проверяет, является ли строка числом типа double.
+     *
+     * @param str строка, которую необходимо проверить
+     * @return true, если строка является числом типа double, false - в противном случае
+     */
     private static boolean isDouble(String str) {
         try {
             Double.parseDouble(str);
