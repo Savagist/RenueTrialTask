@@ -7,14 +7,36 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Objects;
 
+/**
+ * Класс UI предоставляет методы для взаимодействия с пользователем через консоль.
+ */
 public class UI {
+    /**
+     * Константа, обозначающая окончание работы программы.
+     */
     private static final String END_WORK = "!quit";
 
+    /**
+     * Получает ввод пользователя через консоль.
+     *
+     * @param reader  объект BufferedReader для чтения ввода пользователя.
+     * @param request строка, содержащая запрос к пользователю.
+     * @return ввод пользователя в виде строки.
+     * @throws IOException если возникает ошибка ввода-вывода.
+     */
     private static String getUserInput(BufferedReader reader, String request) throws IOException {
         System.out.print(request);
         return reader.readLine();
     }
 
+    /**
+     * Обрабатывает запросы пользователя до тех пор, пока не будет получена команда завершения работы программы.
+     *
+     * @param reader   объект BufferedReader для чтения ввода пользователя.
+     * @param airports объект Trie, содержащий данные об аэропортах.
+     * @throws IOException     если возникает ошибка ввода-вывода.
+     * @throws FilterException если возникает ошибка при фильтрации данных.
+     */
     public static void processUserRequest(BufferedReader reader, Trie airports) throws IOException, FilterException {
         String filter;
         String prefix;
